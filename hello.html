@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greet</title>
+</head>
+<body>
+    <button id="greetBtn">Fetch my balance</button>
+    <input type="text" id="message" readonly>
+    <script>
+        document.getElementById('greetBtn').addEventListener('click', function() {
+            fetch('http://127.0.0.1:5000/mybankbalance')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('message').value = data.message;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
